@@ -29,6 +29,25 @@ function sendMessage() {
     messageInput.value = '';  // очищуємо поле вводу
 }
 
+// Відключення користувача від чату
+function handleDisconnect() {
+    const clientId =
+    fetch(`/disconnect?id=${clientId}`, {
+        method: 'GET',
+    })
+        .then((response) => {
+            if (response.ok) {
+                socket.close();
+                alert('Ви відключились від чату');
+            } else {
+                alert('Помилка відключення');
+            }
+        })
+        .catch((error) => {
+            console.error('Помилка запиту:', error);
+        });
+}
+
 // Функція для показу сповіщення для користувачів, які неактивні
 function showNotification(message) {
     if (Notification.permission === "granted") {
