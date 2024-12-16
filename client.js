@@ -31,7 +31,7 @@ function sendMessage() {
 
 // Відключення користувача від чату
 function handleDisconnect() {
-    const clientId =
+    const clientId = Math.random().toString(36).substring(2, 10); // Генеруємо унікальний ID клієнта
     fetch(`/disconnect?id=${clientId}`, {
         method: 'GET',
     })
